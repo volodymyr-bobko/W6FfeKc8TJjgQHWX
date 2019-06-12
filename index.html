@@ -97,7 +97,12 @@ function animationPlayer(mainFrame, movableFrame, startFrameIndex, endFrameIndex
 }
 </script>
 
-    <script>
+    <script>var price = 'EUR 1.180,-';
+var emailtext = 'info' + '@' + 'cyber-mannequin' + '.' + 'com';
+var mailto = 'mail' + 'to' + ':' + emailtext;
+var phonetext = '+ 1235 ' + '2355 98';
+var tel = 'tel' + ':' + phonetext;
+
 function headerPart() {
 
     var startFrameIndex = 34;
@@ -142,6 +147,14 @@ $(document).ready(function () {
     new details2Part();
 
     $('body').css({ visibility: 'visible' });
+
+    $('A.replace.email').attr("href", mailto);
+    $('A.replace.phone').attr("href", tel);
+
+    $('span.replace.email').text(emailtext);
+    $('span.replace.phone').text(phonetext);
+
+    $('span.replace.price').text(price);
 });</script>
 
     <style>
@@ -996,13 +1009,13 @@ p {
 <body style="visibility:hidden">
 
     <div class="top-info">
-        <a href="tel:+ 1235 2355 98" style="margin-left:0.5em">
+        <a href="TEL" class="replace phone" style="margin-left:0.5em">
             <i class="fas fa-phone"></i>&nbsp;
-            <span class="text">+ 1235 2355 98</span>
+            <span class="text replace phone">TEL</span>
         </a>
-        <a href="mailto:info@cyber-mannequin.com" style="margin-left: 0.5em;">
+        <a href="MAIL" class="replace email" style="margin-left: 0.5em;">
             <i class="fas fa-paper-plane"></i>&nbsp;
-            <span class="text">info@cyber-mannequin.com</span>
+            <span class="text replace email">MAIL</span>
         </a>
     </div>
 
@@ -1052,7 +1065,7 @@ p {
 
     <div id="details2">
         <div class="title">
-            <span>Für nur EUR 1.180,- pro bewegliche Modepuppe erreichen Sie neue Kunden und neue Welten.</span>
+            <span>Für nur <span class="replace price">PRICE</span> pro bewegliche Modepuppe erreichen Sie neue Kunden und neue Welten.</span>
         </div>
         <div id="animation-container">
             <div class="frame main-frame" style="position:relative">
@@ -1063,7 +1076,7 @@ p {
             <p>
                 Unser Mannequin ist der nächste Schritt in der Evolution der Modepuppen.
                 Wir haben ein qualitativ hochwertiges und erschwingliches Mannequin entwickelt. Dabei haben wir nicht nur reibungslose und natürlich aussehende Bewegungen erzielen können, sondern auch einen günstigen und attraktiven Preis.
-                Für nur EUR 1.180,- pro bewegliche Modepuppe erreichen Sie neue Kunden und neue Welten.
+                Für nur <span class="replace price">PRICE</span> pro bewegliche Modepuppe erreichen Sie neue Kunden und neue Welten.
                 Wir fürchten uns nicht, den Preis auf unserer Webseite zu zeigen, weil es sich hierbei um eine hohe Qualität handelt, die Ihnen neue Kundschaft bringt.
             </p>
             <p>
@@ -1083,13 +1096,13 @@ p {
             </p>
         </div>
         <div class="top-info">
-            <a href="tel:+ 1235 2355 98" style="margin-left:0.5em">
+            <a href="TEL" class="replace phone" style="margin-left:0.5em">
                 <i class="fas fa-phone"></i>&nbsp;
-                <span class="text">+ 1235 2355 98</span>
+                <span class="text replace phone">TEL</span>
             </a>
-            <a href="mailto:info@cyber-mannequin.com" style="margin-left: 0.5em;">
+            <a href="MAIL" class="replace email" style="margin-left: 0.5em;">
                 <i class="fas fa-paper-plane"></i>&nbsp;
-                <span class="text">info@cyber-mannequin.com</span>
+                <span class="text replace email">MAIL</span>
             </a>
         </div>
 
