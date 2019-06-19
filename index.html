@@ -5,170 +5,170 @@
 
     <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
 
-    <script>var utils = {};
+    <script>var CB = {};
 
-utils.getOptimalZoom = function (innerWidth, innnerHeight, outerWidth, outerHeight) {
+CB.AA = function (BY, BX, BL, AL) {
 
-    var widthAdjustment = outerWidth / innerWidth;
-    var heightAdjustment = outerHeight / innnerHeight;
+    var AB = BL / BY;
+    var AC = AL / BX;
 
-    var adjustment = widthAdjustment;
+    var AD = AB;
 
-    if (heightAdjustment < widthAdjustment) {
-        adjustment = heightAdjustment;
+    if (AC < AB) {
+        AD = AC;
     }
 
-    return adjustment;
+    return AD;
 };
 </script>
-    <script>function sizeAdjuster(element) {
+    <script>function AE(element) {
 
     this.element = element;
     this.parent = element.parent();
 
-    this.adjustSize = function () {
-        let mainFrameHeight = this.element.height();
-        let mainFrameWidth = this.element.width();
+    this.AP = function () {
+        let AF = this.element.height();
+        let AG = this.element.width();
 
-        let containerWidth = this.parent.width();
-        let containerHeight = this.parent.height();
+        let AH = this.parent.width();
+        let AM = this.parent.height();
 
-        let zoom = utils.getOptimalZoom(mainFrameWidth, mainFrameHeight, containerWidth, containerHeight);
+        let CA = CB.AA(AG, AF, AH, AM);
 
-        let targetCenterY = containerHeight - mainFrameHeight * zoom / 2;
-        let targetCenterX = containerWidth / 2;
+        let AN = AM - AF * CA / 2;
+        let AO = AH / 2;
 
         this.element.css({
-            top: targetCenterY - mainFrameHeight / 2 + 5,
-            left: targetCenterX - mainFrameWidth / 2,
-            transform: `scale(${zoom})`
+            top: AN - AF / 2 + 5,
+            left: AO - AG / 2,
+            transform: `scale(${CA})`
         });
     };
 
-    this.interval =  setInterval(() => this.adjustSize(), 200);
-    this.adjustSize();
+    this.interval =  setInterval(() => this.AP(), 200);
+    this.AP();
 }
 </script>
     <script>
-function animationPlayer(mainFrame, movableFrame, startFrameIndex, endFrameIndex, duration, pause) {
+function BA(CD, CC, BE, BD, duration, CE) {
 
-    this.mainFrame = mainFrame;
-    this.movableFrame = movableFrame;
-    this.currentFrameIndex = startFrameIndex;
-    new sizeAdjuster(this.mainFrame);
+    this.CD = CD;
+    this.CC = CC;
+    this.BF = BE;
+    new AE(this.CD);
 
-    this.playScenarioForward = function () {
+    this.BB = function () {
         $(this).stop();
-        this.setFrame(startFrameIndex);
-        this.animationIteraton = startFrameIndex;
+        this.BW(BE);
+        this.BZ = BE;
 
-        $(this).animate({ animationIteraton: endFrameIndex }, {
+        $(this).animate({ BZ: BD }, {
             step: function (val) {
-                this.setFrame(Math.round(val));
+                this.BW(Math.round(val));
             },
             duration: duration,
-            done: () => setTimeout(() => this.playScenarioBackward(), pause)
+            done: () => setTimeout(() => this.BC(), CE)
         });
     };
 
-    this.playScenarioBackward = function () {
+    this.BC = function () {
         $(this).stop();
-        this.setFrame(endFrameIndex);
-        this.animationIteraton = endFrameIndex;
+        this.BW(BD);
+        this.BZ = BD;
 
-        $(this).animate({ animationIteraton: startFrameIndex }, {
+        $(this).animate({ BZ: BE }, {
             step: function (val) {
-                this.setFrame(Math.round(val));
+                this.BW(Math.round(val));
             },
             duration: duration,
-            done: () => setTimeout(() => this.playScenarioForward(), pause)
+            done: () => setTimeout(() => this.BB(), CE)
         });
     };
 
-    this.setFrame = function (index) {
-        if (index !== this.currentFrameIndex) {
-            this.movableFrame.removeClass("frame" + this.currentFrameIndex);
-            this.currentFrameIndex = index;
-            this.movableFrame.addClass("frame" + this.currentFrameIndex);
+    this.BW = function (index) {
+        if (index !== this.BF) {
+            this.CC.removeClass("K" + this.BF);
+            this.BF = index;
+            this.CC.addClass("K" + this.BF);
         }
     };
 
-    this.playScenarioForward();
+    this.BB();
 }
 </script>
 
     <script>var price = 'EUR 1.180,-';
-var emailtext = 'info' + '@' + 'cyber-mannequin' + '.' + 'com';
-var mailto = 'mail' + 'to' + ':' + emailtext;
-var phonetext = '+' + '43 677 ' + '63541317';
-var tel = 'tel' + ':' + phonetext;
+var BG = 'info' + '@' + 'cyber-mannequin' + '.' + 'com';
+var BH = 'mail' + 'to' + ':' + BG;
+var BM = '+' + '43 677 ' + '63541317';
+var tel = 'tel' + ':' + BM;
 
-function headerPart() {
+function BN() {
 
-    var startFrameIndex = 34;
-    var endFrameIndex = 1;
+    var BE = 34;
+    var BD = 1;
 
     var element = $('#header');
-    var mainFrame = $('.main-frame', element);
+    var CD = $('.main-K', element);
 
-    new sizeAdjuster(mainFrame);
-    new animationPlayer($('.main-frame', element), $('.movable-frame', mainFrame), startFrameIndex, endFrameIndex, 1200, 1000);
+    new AE(CD);
+    new BA($('.main-K', element), $('.movable-K', CD), BE, BD, 1200, 1000);
 }
 
 
-function details1Part() {
+function BO() {
 
-    var startFrameIndex = 32;
-    var endFrameIndex = 1;
+    var BE = 32;
+    var BD = 1;
 
     var element = $('#details1');
-    var mainFrame = $('.main-frame', element);
+    var CD = $('.main-K', element);
 
-    new sizeAdjuster(mainFrame);
-    new animationPlayer($('.main-frame', element), $('.movable-frame', mainFrame), startFrameIndex, endFrameIndex, 1200, 1000);
+    new AE(CD);
+    new BA($('.main-K', element), $('.movable-K', CD), BE, BD, 1200, 1000);
 }
 
 
-function details2Part() {
+function BP() {
 
-    var startFrameIndex = 28;
-    var endFrameIndex = 1;
+    var BE = 28;
+    var BD = 1;
 
     var element = $('#details2');
-    var mainFrame = $('.main-frame', element);
+    var CD = $('.main-K', element);
 
-    new sizeAdjuster(mainFrame);
-    new animationPlayer($('.main-frame', element), $('.movable-frame', mainFrame), startFrameIndex, endFrameIndex, 1200, 1000);
+    new AE(CD);
+    new BA($('.main-K', element), $('.movable-K', CD), BE, BD, 1200, 1000);
 }
 
 $(document).ready(function () {
-    new headerPart();
-    new details1Part();
-    new details2Part();
+    new BN();
+    new BO();
+    new BP();
 
     $('body').css({ visibility: 'visible' });
 
-    $('A.replace.email').attr("href", mailto);
+    $('A.replace.email').attr("href", BH);
     $('A.replace.phone').attr("href", tel);
 
-    $('span.replace.email').text(emailtext);
-    $('span.replace.phone').text(phonetext);
+    $('span.replace.email').text(BG);
+    $('span.replace.phone').text(BM);
 
     $('span.replace.price').text(price);
 });</script>
 
     <style>
 
-#header .frame {
+#header .K {
     background-image: url(sprite-h.png);
 }
 
-#header .main-frame{
+#header .main-K{
     width: 593px;
     height: 651px;
 }
 
-#header .movable-frame {
+#header .movable-K {
     position: relative;
     left: 194.6667px;
     top: -1.540755px;
@@ -178,218 +178,218 @@ $(document).ready(function () {
 
 
 
-#header .frame1 {
+#header .K1 {
     background-position-x: -0px;
     background-position-y: -651px;
 }
 
 
-#header .frame2 {
+#header .K2 {
     background-position-x: -245px;
     background-position-y: -651px;
 }
 
 
-#header .frame3 {
+#header .K3 {
     background-position-x: -0px;
     background-position-y: -986px;
 }
 
 
-#header .frame4 {
+#header .K4 {
     background-position-x: -245px;
     background-position-y: -986px;
 }
 
 
-#header .frame5 {
+#header .K5 {
     background-position-x: -0px;
     background-position-y: -1321px;
 }
 
 
-#header .frame6 {
+#header .K6 {
     background-position-x: -245px;
     background-position-y: -1321px;
 }
 
 
-#header .frame7 {
+#header .K7 {
     background-position-x: -0px;
     background-position-y: -1656px;
 }
 
 
-#header .frame8 {
+#header .K8 {
     background-position-x: -245px;
     background-position-y: -1656px;
 }
 
 
-#header .frame9 {
+#header .K9 {
     background-position-x: -0px;
     background-position-y: -1991px;
 }
 
 
-#header .frame10 {
+#header .K10 {
     background-position-x: -245px;
     background-position-y: -1991px;
 }
 
 
-#header .frame11 {
+#header .K11 {
     background-position-x: -0px;
     background-position-y: -2326px;
 }
 
 
-#header .frame12 {
+#header .K12 {
     background-position-x: -245px;
     background-position-y: -2326px;
 }
 
 
-#header .frame13 {
+#header .K13 {
     background-position-x: -0px;
     background-position-y: -2661px;
 }
 
 
-#header .frame14 {
+#header .K14 {
     background-position-x: -245px;
     background-position-y: -2661px;
 }
 
 
-#header .frame15 {
+#header .K15 {
     background-position-x: -0px;
     background-position-y: -2996px;
 }
 
 
-#header .frame16 {
+#header .K16 {
     background-position-x: -245px;
     background-position-y: -2996px;
 }
 
 
-#header .frame17 {
+#header .K17 {
     background-position-x: -0px;
     background-position-y: -3331px;
 }
 
 
-#header .frame18 {
+#header .K18 {
     background-position-x: -245px;
     background-position-y: -3331px;
 }
 
 
-#header .frame19 {
+#header .K19 {
     background-position-x: -0px;
     background-position-y: -3666px;
 }
 
 
-#header .frame20 {
+#header .K20 {
     background-position-x: -245px;
     background-position-y: -3666px;
 }
 
 
-#header .frame21 {
+#header .K21 {
     background-position-x: -0px;
     background-position-y: -4001px;
 }
 
 
-#header .frame22 {
+#header .K22 {
     background-position-x: -245px;
     background-position-y: -4001px;
 }
 
 
-#header .frame23 {
+#header .K23 {
     background-position-x: -0px;
     background-position-y: -4336px;
 }
 
 
-#header .frame24 {
+#header .K24 {
     background-position-x: -245px;
     background-position-y: -4336px;
 }
 
 
-#header .frame25 {
+#header .K25 {
     background-position-x: -0px;
     background-position-y: -4671px;
 }
 
 
-#header .frame26 {
+#header .K26 {
     background-position-x: -245px;
     background-position-y: -4671px;
 }
 
 
-#header .frame27 {
+#header .K27 {
     background-position-x: -0px;
     background-position-y: -5006px;
 }
 
 
-#header .frame28 {
+#header .K28 {
     background-position-x: -245px;
     background-position-y: -5006px;
 }
 
 
-#header .frame29 {
+#header .K29 {
     background-position-x: -0px;
     background-position-y: -5341px;
 }
 
 
-#header .frame30 {
+#header .K30 {
     background-position-x: -245px;
     background-position-y: -5341px;
 }
 
 
-#header .frame31 {
+#header .K31 {
     background-position-x: -0px;
     background-position-y: -5676px;
 }
 
 
-#header .frame32 {
+#header .K32 {
     background-position-x: -245px;
     background-position-y: -5676px;
 }
 
 
-#header .frame33 {
+#header .K33 {
     background-position-x: -0px;
     background-position-y: -6011px;
 }
 
 
-#header .frame34 {
+#header .K34 {
     background-position-x: -245px;
     background-position-y: -6011px;
 }
 
 
 
-#header #animation-container {
+#header #CN {
     background-image: url(header-bg.png);
     height: 20em;
     background-size: 100%;
 }
 
-#header #text-container {
+#header #CL {
     background-color: #4b5d64;
     padding: 1em;
 }
@@ -398,41 +398,41 @@ $(document).ready(function () {
     padding:0;
 }
 
-#header #text-container li:nth-child(1) {
+#header #CL li:nth-child(1) {
     animation-delay: 0.4s;
 }
 
-#header #text-container li:nth-child(2) {
+#header #CL li:nth-child(2) {
     animation-delay: 0.6s;
 }
 
-#header #text-container li:nth-child(3) {
+#header #CL li:nth-child(3) {
     animation-delay: 0.8s;
 }
 
-#header #text-container li:nth-child(4) {
+#header #CL li:nth-child(4) {
     animation-delay: 1s;
 }
 
 
 @media only screen and (min-width: 1500px) {
-    #header #animation-container {
+    #header #CN {
         height: 40em;
         background-image: url(header-bg-high.png);
     }
 }
 
 
-#details1 .frame {
+#details1 .K {
     background-image: url(sprite-d1.png);
 }
 
-#details1 .main-frame{
+#details1 .main-K{
     width: 598px;
     height: 840px;
 }
 
-#details1 .movable-frame {
+#details1 .movable-K {
     position: relative;
     left: 82px;
     top: 2px;
@@ -440,193 +440,193 @@ $(document).ready(function () {
     height: 312px;
 }
 
-#details1 .frame1 {
+#details1 .K1 {
     background-position-x: -0px;
     background-position-y: -840px;
 }
 
 
-#details1 .frame2 {
+#details1 .K2 {
     background-position-x: -281px;
     background-position-y: -840px;
 }
 
 
-#details1 .frame3 {
+#details1 .K3 {
     background-position-x: -0px;
     background-position-y: -1152px;
 }
 
 
-#details1 .frame4 {
+#details1 .K4 {
     background-position-x: -281px;
     background-position-y: -1152px;
 }
 
 
-#details1 .frame5 {
+#details1 .K5 {
     background-position-x: -0px;
     background-position-y: -1464px;
 }
 
 
-#details1 .frame6 {
+#details1 .K6 {
     background-position-x: -281px;
     background-position-y: -1464px;
 }
 
 
-#details1 .frame7 {
+#details1 .K7 {
     background-position-x: -0px;
     background-position-y: -1776px;
 }
 
 
-#details1 .frame8 {
+#details1 .K8 {
     background-position-x: -281px;
     background-position-y: -1776px;
 }
 
 
-#details1 .frame9 {
+#details1 .K9 {
     background-position-x: -0px;
     background-position-y: -2088px;
 }
 
 
-#details1 .frame10 {
+#details1 .K10 {
     background-position-x: -281px;
     background-position-y: -2088px;
 }
 
 
-#details1 .frame11 {
+#details1 .K11 {
     background-position-x: -0px;
     background-position-y: -2400px;
 }
 
 
-#details1 .frame12 {
+#details1 .K12 {
     background-position-x: -281px;
     background-position-y: -2400px;
 }
 
 
-#details1 .frame13 {
+#details1 .K13 {
     background-position-x: -0px;
     background-position-y: -2712px;
 }
 
 
-#details1 .frame14 {
+#details1 .K14 {
     background-position-x: -281px;
     background-position-y: -2712px;
 }
 
 
-#details1 .frame15 {
+#details1 .K15 {
     background-position-x: -0px;
     background-position-y: -3024px;
 }
 
 
-#details1 .frame16 {
+#details1 .K16 {
     background-position-x: -281px;
     background-position-y: -3024px;
 }
 
 
-#details1 .frame17 {
+#details1 .K17 {
     background-position-x: -0px;
     background-position-y: -3336px;
 }
 
 
-#details1 .frame18 {
+#details1 .K18 {
     background-position-x: -281px;
     background-position-y: -3336px;
 }
 
 
-#details1 .frame19 {
+#details1 .K19 {
     background-position-x: -0px;
     background-position-y: -3648px;
 }
 
 
-#details1 .frame20 {
+#details1 .K20 {
     background-position-x: -281px;
     background-position-y: -3648px;
 }
 
 
-#details1 .frame21 {
+#details1 .K21 {
     background-position-x: -0px;
     background-position-y: -3960px;
 }
 
 
-#details1 .frame22 {
+#details1 .K22 {
     background-position-x: -281px;
     background-position-y: -3960px;
 }
 
 
-#details1 .frame23 {
+#details1 .K23 {
     background-position-x: -0px;
     background-position-y: -4272px;
 }
 
 
-#details1 .frame24 {
+#details1 .K24 {
     background-position-x: -281px;
     background-position-y: -4272px;
 }
 
 
-#details1 .frame25 {
+#details1 .K25 {
     background-position-x: -0px;
     background-position-y: -4584px;
 }
 
 
-#details1 .frame26 {
+#details1 .K26 {
     background-position-x: -281px;
     background-position-y: -4584px;
 }
 
 
-#details1 .frame27 {
+#details1 .K27 {
     background-position-x: -0px;
     background-position-y: -4896px;
 }
 
 
-#details1 .frame28 {
+#details1 .K28 {
     background-position-x: -281px;
     background-position-y: -4896px;
 }
 
 
-#details1 .frame29 {
+#details1 .K29 {
     background-position-x: -0px;
     background-position-y: -5208px;
 }
 
 
-#details1 .frame30 {
+#details1 .K30 {
     background-position-x: -281px;
     background-position-y: -5208px;
 }
 
 
-#details1 .frame31 {
+#details1 .K31 {
     background-position-x: -0px;
     background-position-y: -5520px;
 }
 
 
-#details1 .frame32 {
+#details1 .K32 {
     background-position-x: -281px;
     background-position-y: -5520px;
 }
@@ -638,7 +638,7 @@ $(document).ready(function () {
     color: black;
 }
 
-#details1 #animation-container {
+#details1 #CN {
     background-image: url(details1-bg.png);
     height: 20em;
     background-size: 100%;
@@ -649,25 +649,25 @@ $(document).ready(function () {
 }
 
 @media only screen and (min-width: 1500px) {
-    #details1 #animation-container {
+    #details1 #CN {
         height: 40em;
     }
-    #details1 #animation-container {
+    #details1 #CN {
         background-image: url(details1-bg-high.png);
     }
 }
 
 
-#details2 .frame {
+#details2 .K {
     background-image: url(sprite-d2.png);
 }
 
-#details2 .main-frame{
+#details2 .main-K{
     width: 560px;
     height: 841px;
 }
 
-#details2 .movable-frame {
+#details2 .movable-K {
     position: relative;
     left: 210.0392px;
     top: 18.11765px;
@@ -677,169 +677,169 @@ $(document).ready(function () {
 
 
 
-#details2 .frame1 {
+#details2 .K1 {
     background-position-x: -0px;
     background-position-y: -841px;
 }
 
 
-#details2 .frame2 {
+#details2 .K2 {
     background-position-x: -0px;
     background-position-y: -1221px;
 }
 
 
-#details2 .frame3 {
+#details2 .K3 {
     background-position-x: -0px;
     background-position-y: -1601px;
 }
 
 
-#details2 .frame4 {
+#details2 .K4 {
     background-position-x: -0px;
     background-position-y: -1981px;
 }
 
 
-#details2 .frame5 {
+#details2 .K5 {
     background-position-x: -0px;
     background-position-y: -2361px;
 }
 
 
-#details2 .frame6 {
+#details2 .K6 {
     background-position-x: -0px;
     background-position-y: -2741px;
 }
 
 
-#details2 .frame7 {
+#details2 .K7 {
     background-position-x: -0px;
     background-position-y: -3121px;
 }
 
 
-#details2 .frame8 {
+#details2 .K8 {
     background-position-x: -0px;
     background-position-y: -3501px;
 }
 
 
-#details2 .frame9 {
+#details2 .K9 {
     background-position-x: -0px;
     background-position-y: -3881px;
 }
 
 
-#details2 .frame10 {
+#details2 .K10 {
     background-position-x: -0px;
     background-position-y: -4261px;
 }
 
 
-#details2 .frame11 {
+#details2 .K11 {
     background-position-x: -0px;
     background-position-y: -4641px;
 }
 
 
-#details2 .frame12 {
+#details2 .K12 {
     background-position-x: -0px;
     background-position-y: -5021px;
 }
 
 
-#details2 .frame13 {
+#details2 .K13 {
     background-position-x: -0px;
     background-position-y: -5401px;
 }
 
 
-#details2 .frame14 {
+#details2 .K14 {
     background-position-x: -0px;
     background-position-y: -5781px;
 }
 
 
-#details2 .frame15 {
+#details2 .K15 {
     background-position-x: -0px;
     background-position-y: -6161px;
 }
 
 
-#details2 .frame16 {
+#details2 .K16 {
     background-position-x: -0px;
     background-position-y: -6541px;
 }
 
 
-#details2 .frame17 {
+#details2 .K17 {
     background-position-x: -0px;
     background-position-y: -6921px;
 }
 
 
-#details2 .frame18 {
+#details2 .K18 {
     background-position-x: -0px;
     background-position-y: -7301px;
 }
 
 
-#details2 .frame19 {
+#details2 .K19 {
     background-position-x: -0px;
     background-position-y: -7681px;
 }
 
 
-#details2 .frame20 {
+#details2 .K20 {
     background-position-x: -0px;
     background-position-y: -8061px;
 }
 
 
-#details2 .frame21 {
+#details2 .K21 {
     background-position-x: -0px;
     background-position-y: -8441px;
 }
 
 
-#details2 .frame22 {
+#details2 .K22 {
     background-position-x: -0px;
     background-position-y: -8821px;
 }
 
 
-#details2 .frame23 {
+#details2 .K23 {
     background-position-x: -0px;
     background-position-y: -9201px;
 }
 
 
-#details2 .frame24 {
+#details2 .K24 {
     background-position-x: -0px;
     background-position-y: -9581px;
 }
 
 
-#details2 .frame25 {
+#details2 .K25 {
     background-position-x: -0px;
     background-position-y: -9961px;
 }
 
 
-#details2 .frame26 {
+#details2 .K26 {
     background-position-x: -0px;
     background-position-y: -10341px;
 }
 
 
-#details2 .frame27 {
+#details2 .K27 {
     background-position-x: -0px;
     background-position-y: -10721px;
 }
 
 
-#details2 .frame28 {
+#details2 .K28 {
     background-position-x: -0px;
     background-position-y: -11101px;
 }
@@ -851,7 +851,7 @@ $(document).ready(function () {
     color: black;
 }
 
-#details2 #animation-container {
+#details2 #CN {
     background-image: url(details2-bg.png);
     height: 20em;
     background-size: 100%;
@@ -862,7 +862,7 @@ $(document).ready(function () {
 }
 
 @media only screen and (min-width: 1500px) {
-    #details2 #animation-container {
+    #details2 #CN {
         height: 40em;
         background-image: url(details2-bg-high.png);
     }
@@ -880,7 +880,7 @@ $(document).ready(function () {
     text-align: center;
 }
 
-#footer #text-container {
+#footer #CL {
     line-height:2em;
 }
 
@@ -894,7 +894,7 @@ body {
     font-family: "Open Sans", Arial, sans-serif;
 }
 
-.top-info {
+.CK {
     background-color: black;
     line-height: 1.8;
     font-weight: 400;
@@ -907,11 +907,11 @@ body {
     text-align: center;
 }
 
-.top-info a span {
+.CK a span {
     margin-left:1em;
 }
 
-.top-info a {
+.CK a {
     color: white;
     text-decoration: none;
 }
@@ -964,11 +964,11 @@ p {
     line-height:1.5em;
 }
 
-#text-container {
+#CL {
     padding: 2em;
 }
 
-#animation-container {
+#CN {
     overflow: hidden;
 }
 
@@ -977,7 +977,7 @@ p {
         font-size: x-large;
     }
 
-    .top-info {
+    .CK {
         font-size: x-large;
     }
 
@@ -989,7 +989,7 @@ p {
         font-size: x-large;
     }
 
-    #text-container {
+    #CL {
         padding-left: 10em;
         padding-right: 10em;
         padding-top: 4em;
@@ -1008,7 +1008,7 @@ p {
 </head>
 <body style="visibility:hidden">
 
-    <div class="top-info">
+    <div class="CK">
         <a href="TEL" class="replace phone" style="margin-left:0.5em">
             <i class="fas fa-phone"></i><span class="text replace phone">TEL</span>
         </a>
@@ -1018,12 +1018,12 @@ p {
     </div>
 
     <div id="header" class="part">
-        <div id="animation-container">
-            <div class="frame main-frame" style="position:relative">
-                <div class="frame movable-frame frame34"></div>
+        <div id="CN">
+            <div class="K main-K" style="position:relative">
+                <div class="K movable-K K34"></div>
             </div>
         </div>
-        <div id="text-container">
+        <div id="CL">
             <div class="title">
                 <span>Gestern noch Puppe  - heute Hightech</span>
                 <br />
@@ -1042,12 +1042,12 @@ p {
         <div class="title">
             <span>Wie profitieren Sie davon?</span>
         </div>
-        <div id="animation-container">
-            <div class="frame main-frame" style="position:relative">
-                <div class="frame movable-frame frame32"></div>
+        <div id="CN">
+            <div class="K main-K" style="position:relative">
+                <div class="K movable-K K32"></div>
             </div>
         </div>
-        <div id="text-container">
+        <div id="CL">
             <p>
                 Nichts erregt die Aufmerksamkeit der Menschen mehr als Bilder und Bewegungen.
                 Wie profitieren Sie davon?
@@ -1065,12 +1065,12 @@ p {
         <div class="title">
             <span>Für nur <span class="replace price">PRICE</span> pro bewegliche Modepuppe erreichen Sie neue Kunden und neue Welten.</span>
         </div>
-        <div id="animation-container">
-            <div class="frame main-frame" style="position:relative">
-                <div class="frame movable-frame frame28"></div>
+        <div id="CN">
+            <div class="K main-K" style="position:relative">
+                <div class="K movable-K K28"></div>
             </div>
         </div>
-        <div id="text-container">
+        <div id="CL">
             <p>
                 Unser Mannequin ist der nächste Schritt in der Evolution der Modepuppen.
                 Wir haben ein qualitativ hochwertiges und erschwingliches Mannequin entwickelt. Dabei haben wir nicht nur reibungslose und natürlich aussehende Bewegungen erzielen können, sondern auch einen günstigen und attraktiven Preis.
@@ -1088,12 +1088,12 @@ p {
     </div>
 
     <div id="footer">
-        <div id="text-container">
+        <div id="CL">
             <p>
                 Wenden Sie sich an unsere Verkaufsabteilung in Wien, und holen Sie das Beste aus unserem innovativen Ansatz für Ihr Geschäft und einen steigenden Umsatz heraus.
             </p>
         </div>
-        <div class="top-info">
+        <div class="CK">
             <a href="TEL" class="replace phone" style="margin-left:0.5em">
                 <i class="fas fa-phone"></i><span class="text replace phone">TEL</span>
             </a>
