@@ -146,6 +146,13 @@ function BP() {
     new BA($('.main-frame', element), $('.movable-frame', CD), BE, BD, 1200, 1000);
 }
 
+var cW1 = false;
+
+function onCW1() {
+    $('<img height="1" width="1" style="display:none;" alt="" src="https://px.ads.linkedin.com/collect/?pid=1839929&conversionId=1743705&fmt=gif" />')
+        .appendTo($('body'));
+}
+
 $(document).ready(function () {
     new BN();
     new BO();
@@ -154,6 +161,15 @@ $(document).ready(function () {
     $('body').css({ visibility: 'visible' });
 
     $('span.replace.price').text(price);
+
+    setInterval(function () {
+
+        if (!cW1 && $(".message:contains('Vielen Dank')").length > 0) {
+            cW1 = true;
+            onCW1();
+        }
+
+    }, 500);
 });</script>
 
     <style>
