@@ -146,12 +146,17 @@ function BP() {
     new BA($('.main-frame', element), $('.movable-frame', CD), BE, BD, 1200, 1000);
 }
 
-var cW1 = false;
-
 function onCW1() {
     $('<img height="1" width="1" style="display:none;" alt="" src="https://px.ads.linkedin.com/collect/?pid=1839929&conversionId=1743705&fmt=gif" />')
         .appendTo($('body'));
 }
+
+var inbound_callbacks = {
+    submitted: function (result) {
+        onCW1();
+        console.log('Contact us form was submitted.');
+    }
+};
 
 $(document).ready(function () {
     new BN();
@@ -159,18 +164,8 @@ $(document).ready(function () {
     new BP();
 
     $('body').css({ visibility: 'visible' });
-
     $('span.replace.price').text(price);
 
-    setInterval(function () {
-
-
-        if (!cW1 && $('iframe').contents().find(".message:contains('Vielen Dank')").length > 0) {
-            cW1 = true;
-            onCW1();
-        }
-
-    }, 500);
 });</script>
 
     <style>
