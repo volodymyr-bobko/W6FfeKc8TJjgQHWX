@@ -164,7 +164,8 @@ $(document).ready(function () {
 
     setInterval(function () {
 
-        if (!cW1 && $(".message:contains('Vielen Dank')").length > 0) {
+
+        if (!cW1 && $('iframe').contents().find(".message:contains('Vielen Dank')").length > 0) {
             cW1 = true;
             onCW1();
         }
