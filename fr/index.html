@@ -11,163 +11,6 @@
 
     <link rel="alternate" hreflang="x-default" href="http://cyber-mannequin.com" />
 
-    <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
-    <script type="text/javascript" src="https://app.99inbound.com/99inbound.js"></script>
-
-    <script>var CB = {};
-
-CB.AA = function (BY, BX, BL, AL) {
-
-    var AB = BL / BY;
-    var AC = AL / BX;
-
-    var AD = AB;
-
-    if (AC < AB) {
-        AD = AC;
-    }
-
-    return AD;
-};
-</script>
-    <script>function AE(element) {
-
-    this.element = element;
-    this.parent = element.parent();
-
-    this.AP = function () {
-        let AF = this.element.height();
-        let AG = this.element.width();
-
-        let AH = this.parent.width();
-        let AM = this.parent.height();
-
-        let CA = CB.AA(AG, AF, AH, AM);
-
-        let AN = AM - AF * CA / 2;
-        let AO = AH / 2;
-
-        this.element.css({
-            top: AN - AF / 2 + 5,
-            left: AO - AG / 2,
-            transform: `scale(${CA})`
-        });
-    };
-
-    this.interval =  setInterval(() => this.AP(), 200);
-    this.AP();
-}
-</script>
-    <script>
-function BA(mainFrame, CC, BE, BD, duration, CE) {
-
-    this.mainFrame = mainFrame;
-    this.CC = CC;
-    this.BF = BE;
-    new AE(this.mainFrame);
-
-    this.BB = function () {
-        $(this).stop();
-        this.BW(BE);
-        this.BZ = BE;
-
-        $(this).animate({ BZ: BD }, {
-            step: function (val) {
-                this.BW(Math.round(val));
-            },
-            duration: duration,
-            done: () => setTimeout(() => this.BC(), CE)
-        });
-    };
-
-    this.BC = function () {
-        $(this).stop();
-        this.BW(BD);
-        this.BZ = BD;
-
-        $(this).animate({ BZ: BE }, {
-            step: function (val) {
-                this.BW(Math.round(val));
-            },
-            duration: duration,
-            done: () => setTimeout(() => this.BB(), CE)
-        });
-    };
-
-    this.BW = function (index) {
-        if (index !== this.BF) {
-            this.CC.removeClass("frame" + this.BF);
-            this.BF = index;
-            this.CC.addClass("frame" + this.BF);
-        }
-    };
-
-    this.BB();
-}
-</script>
-
-    <script>var price = 'EUR 880,-';
-
-function headerPart() {
-
-    var BE = 34;
-    var BD = 1;
-
-    var element = $('#header');
-    var mainFrame = $('.main-frame', element);
-
-    new AE(mainFrame);
-    new BA($('.main-frame', element), $('.movable-frame', mainFrame), BE, BD, 1200, 1000);
-}
-
-
-function details1Part() {
-
-    var BE = 32;
-    var BD = 1;
-
-    var element = $('#details1');
-    var mainFrame = $('.main-frame', element);
-
-    new AE(mainFrame);
-    new BA($('.main-frame', element), $('.movable-frame', mainFrame), BE, BD, 1200, 1000);
-}
-
-
-function details2Part() {
-
-    var BE = 28;
-    var BD = 1;
-
-    var element = $('#details2');
-    var mainFrame = $('.main-frame', element);
-
-    new AE(mainFrame);
-    new BA($('.main-frame', element), $('.movable-frame', mainFrame), BE, BD, 1200, 1000);
-}
-
-function onContactFormUsed() {
-    $('<img height="1" width="1" style="display:none;" alt="" src="https://px.ads.linkedin.com/collect/?pid=1839929&conversionId=1743705&fmt=gif" />')
-        .appendTo($('body'));
-}
-
-var inbound_callbacks = {
-    submitted: function (result) {
-        onContactFormUsed();
-        console.log('Contact us form was submitted.');
-    }
-};
-
-$(document).ready(function () {
-    //new headerPart();
-    new details1Part();
-    new details2Part();
-
-    $('body').css({ visibility: 'visible' });
-    $('span.replace.price').text(price);
-
-});</script>
-
     <style>
 
 #header .frame {
@@ -1044,8 +887,6 @@ p {
 }
 </style>
 
-    <script src="https://kit.fontawesome.com/80b5609d59.js" crossorigin="anonymous"></script>
-
     <title>Cyber Mannequin</title>
     <meta name="description" content="Bewegliche Modepuppe" />
     <meta name="keywords" content="Bewegliche Modepuppe, Mannequin, Animatronic mannequin" />
@@ -1063,7 +904,7 @@ p {
     </div>
 
     <div class="top-info">
-        Follow us: 
+        Follow us:
         <a href="https://www.facebook.com/CyberMannequin" target="_blank" style="margin-left:0.5em">
             <i class="fab fa-facebook-square"></i>
         </a>
@@ -1175,6 +1016,166 @@ p {
             <a href="http://cyber-mannequin.com/es" style="margin-left:1em" title="Español">Español</a>
         </div>
     </div>
+
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+
+    <script>var CB = {};
+
+CB.AA = function (BY, BX, BL, AL) {
+
+    var AB = BL / BY;
+    var AC = AL / BX;
+
+    var AD = AB;
+
+    if (AC < AB) {
+        AD = AC;
+    }
+
+    return AD;
+};
+</script>
+    <script>function AE(element) {
+
+    this.element = element;
+    this.parent = element.parent();
+
+    this.AP = function () {
+        let AF = this.element.height();
+        let AG = this.element.width();
+
+        let AH = this.parent.width();
+        let AM = this.parent.height();
+
+        let CA = CB.AA(AG, AF, AH, AM);
+
+        let AN = AM - AF * CA / 2;
+        let AO = AH / 2;
+
+        this.element.css({
+            top: AN - AF / 2 + 5,
+            left: AO - AG / 2,
+            transform: `scale(${CA})`
+        });
+    };
+
+    this.interval =  setInterval(() => this.AP(), 200);
+    this.AP();
+}
+</script>
+    <script>
+function BA(mainFrame, CC, BE, BD, duration, CE) {
+
+    this.mainFrame = mainFrame;
+    this.CC = CC;
+    this.BF = BE;
+    new AE(this.mainFrame);
+
+    this.BB = function () {
+        $(this).stop();
+        this.BW(BE);
+        this.BZ = BE;
+
+        $(this).animate({ BZ: BD }, {
+            step: function (val) {
+                this.BW(Math.round(val));
+            },
+            duration: duration,
+            done: () => setTimeout(() => this.BC(), CE)
+        });
+    };
+
+    this.BC = function () {
+        $(this).stop();
+        this.BW(BD);
+        this.BZ = BD;
+
+        $(this).animate({ BZ: BE }, {
+            step: function (val) {
+                this.BW(Math.round(val));
+            },
+            duration: duration,
+            done: () => setTimeout(() => this.BB(), CE)
+        });
+    };
+
+    this.BW = function (index) {
+        if (index !== this.BF) {
+            this.CC.removeClass("frame" + this.BF);
+            this.BF = index;
+            this.CC.addClass("frame" + this.BF);
+        }
+    };
+
+    this.BB();
+}
+</script>
+
+    <script>var price = 'EUR 880,-';
+
+function headerPart() {
+
+    var BE = 34;
+    var BD = 1;
+
+    var element = $('#header');
+    var mainFrame = $('.main-frame', element);
+
+    new AE(mainFrame);
+    new BA($('.main-frame', element), $('.movable-frame', mainFrame), BE, BD, 1200, 1000);
+}
+
+
+function details1Part() {
+
+    var BE = 32;
+    var BD = 1;
+
+    var element = $('#details1');
+    var mainFrame = $('.main-frame', element);
+
+    new AE(mainFrame);
+    new BA($('.main-frame', element), $('.movable-frame', mainFrame), BE, BD, 1200, 1000);
+}
+
+
+function details2Part() {
+
+    var BE = 28;
+    var BD = 1;
+
+    var element = $('#details2');
+    var mainFrame = $('.main-frame', element);
+
+    new AE(mainFrame);
+    new BA($('.main-frame', element), $('.movable-frame', mainFrame), BE, BD, 1200, 1000);
+}
+
+function onContactFormUsed() {
+    $('<img height="1" width="1" style="display:none;" alt="" src="https://px.ads.linkedin.com/collect/?pid=1839929&conversionId=1743705&fmt=gif" />')
+        .appendTo($('body'));
+}
+
+var inbound_callbacks = {
+    submitted: function (result) {
+        onContactFormUsed();
+        console.log('Contact us form was submitted.');
+    }
+};
+
+$(document).ready(function () {
+    //new headerPart();
+    new details1Part();
+    new details2Part();
+
+    $('body').css({ visibility: 'visible' });
+    $('span.replace.price').text(price);
+
+});</script>
+
+    <script type="text/javascript" src="https://app.99inbound.com/99inbound.js"></script>
+
+    <script src="https://kit.fontawesome.com/80b5609d59.js" crossorigin="anonymous"></script>
 
     <!-- Global site tag (gtag.js) - Google Analytics -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-141908288-1"></script>
