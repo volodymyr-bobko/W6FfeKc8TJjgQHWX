@@ -59,12 +59,12 @@ CB.AA = function (BY, BX, BL, AL) {
 }
 </script>
     <script>
-function BA(CD, CC, BE, BD, duration, CE) {
+function BA(mainFrame, CC, BE, BD, duration, CE) {
 
-    this.CD = CD;
+    this.mainFrame = mainFrame;
     this.CC = CC;
     this.BF = BE;
-    new AE(this.CD);
+    new AE(this.mainFrame);
 
     this.BB = function () {
         $(this).stop();
@@ -108,60 +108,60 @@ function BA(CD, CC, BE, BD, duration, CE) {
 
     <script>var price = 'EUR 880,-';
 
-function BN() {
+function headerPart() {
 
     var BE = 34;
     var BD = 1;
 
     var element = $('#header');
-    var CD = $('.main-frame', element);
+    var mainFrame = $('.main-frame', element);
 
-    new AE(CD);
-    new BA($('.main-frame', element), $('.movable-frame', CD), BE, BD, 1200, 1000);
+    new AE(mainFrame);
+    new BA($('.main-frame', element), $('.movable-frame', mainFrame), BE, BD, 1200, 1000);
 }
 
 
-function BO() {
+function details1Part() {
 
     var BE = 32;
     var BD = 1;
 
     var element = $('#details1');
-    var CD = $('.main-frame', element);
+    var mainFrame = $('.main-frame', element);
 
-    new AE(CD);
-    new BA($('.main-frame', element), $('.movable-frame', CD), BE, BD, 1200, 1000);
+    new AE(mainFrame);
+    new BA($('.main-frame', element), $('.movable-frame', mainFrame), BE, BD, 1200, 1000);
 }
 
 
-function BP() {
+function details2Part() {
 
     var BE = 28;
     var BD = 1;
 
     var element = $('#details2');
-    var CD = $('.main-frame', element);
+    var mainFrame = $('.main-frame', element);
 
-    new AE(CD);
-    new BA($('.main-frame', element), $('.movable-frame', CD), BE, BD, 1200, 1000);
+    new AE(mainFrame);
+    new BA($('.main-frame', element), $('.movable-frame', mainFrame), BE, BD, 1200, 1000);
 }
 
-function onCW1() {
+function onContactFormUsed() {
     $('<img height="1" width="1" style="display:none;" alt="" src="https://px.ads.linkedin.com/collect/?pid=1839929&conversionId=1743705&fmt=gif" />')
         .appendTo($('body'));
 }
 
 var inbound_callbacks = {
     submitted: function (result) {
-        onCW1();
+        onContactFormUsed();
         console.log('Contact us form was submitted.');
     }
 };
 
 $(document).ready(function () {
-    new BN();
-    new BO();
-    new BP();
+    //new headerPart();
+    new details1Part();
+    new details2Part();
 
     $('body').css({ visibility: 'visible' });
     $('span.replace.price').text(price);
@@ -394,13 +394,13 @@ $(document).ready(function () {
 
 
 
-#header #CN {
+#header #animation-container {
     background-image: url(../header-bg.png);
     height: 20em;
     background-size: 100%;
 }
 
-#header #CL {
+#header #text-container {
     background-color: #4b5d64;
     padding: 1em;
 }
@@ -409,25 +409,25 @@ $(document).ready(function () {
     padding:0;
 }
 
-#header #CL li:nth-child(1) {
+#header #text-container li:nth-child(1) {
     animation-delay: 0.4s;
 }
 
-#header #CL li:nth-child(2) {
+#header #text-container li:nth-child(2) {
     animation-delay: 0.6s;
 }
 
-#header #CL li:nth-child(3) {
+#header #text-container li:nth-child(3) {
     animation-delay: 0.8s;
 }
 
-#header #CL li:nth-child(4) {
+#header #text-container li:nth-child(4) {
     animation-delay: 1s;
 }
 
 
 @media only screen and (min-width: 1500px) {
-    #header #CN {
+    #header #animation-container {
         height: 40em;
         background-image: url(./../header-bg-high.png);
     }
@@ -649,7 +649,7 @@ $(document).ready(function () {
     color: black;
 }
 
-#details1 #CN {
+#details1 #animation-container {
     background-image: url(../details1-bg.png);
     height: 20em;
     background-size: 100%;
@@ -660,10 +660,10 @@ $(document).ready(function () {
 }
 
 @media only screen and (min-width: 1500px) {
-    #details1 #CN {
+    #details1 #animation-container {
         height: 40em;
     }
-    #details1 #CN {
+    #details1 #animation-container {
         background-image: url(../details1-bg-high.png);
     }
 }
@@ -862,7 +862,7 @@ $(document).ready(function () {
     color: black;
 }
 
-#details2 #CN {
+#details2 #animation-container {
     background-image: url(../details2-bg.png);
     height: 20em;
     background-size: 100%;
@@ -873,7 +873,7 @@ $(document).ready(function () {
 }
 
 @media only screen and (min-width: 1500px) {
-    #details2 #CN {
+    #details2 #animation-container {
         height: 40em;
         background-image: url(../details2-bg-high.png);
     }
@@ -917,7 +917,7 @@ $(document).ready(function () {
     text-align: center;
 }
 
-#footer #CL {
+#footer #text-container {
     line-height:2em;
 }
 
@@ -931,12 +931,16 @@ body {
     font-family: "Open Sans", Arial, sans-serif;
 }
 
+video {
+    margin-bottom: -10px;
+}
+
 .inbound-form-wrapper {
     max-width: 599px;
     margin: auto;
 }
 
-.CK {
+.top-info {
     background-color: black;
     line-height: 1.8;
     font-weight: 400;
@@ -949,11 +953,11 @@ body {
     text-align: center;
 }
 
-.CK a span {
+.top-info a span {
     margin-left:1em;
 }
 
-.CK a {
+.top-info a {
     color: white;
     text-decoration: none;
 }
@@ -1006,11 +1010,11 @@ p {
     line-height:1.5em;
 }
 
-#CL {
+#text-container {
     padding: 2em;
 }
 
-#CN {
+#animation-container {
     overflow: hidden;
 }
 
@@ -1019,7 +1023,7 @@ p {
         font-size: x-large;
     }
 
-    .CK {
+    .top-info {
         font-size: x-large;
     }
 
@@ -1031,7 +1035,7 @@ p {
         font-size: x-large;
     }
 
-    #CL {
+    #text-container {
         padding-left: 10em;
         padding-right: 10em;
         padding-top: 4em;
@@ -1050,7 +1054,7 @@ p {
 </head>
 <body style="visibility:hidden">
 
-    <div class="CK">
+    <div class="top-info">
         <a href="http://cyber-mannequin.com/en" style="margin-left:1em" title="English">English</a>
         <a href="http://cyber-mannequin.com/fr" style="margin-left:1em" title="Français">Français</a>
         <a href="http://cyber-mannequin.com/de" style="margin-left:1em" title="Deutsch">Deutsch</a>
@@ -1058,7 +1062,7 @@ p {
         <a href="http://cyber-mannequin.com/es" style="margin-left:1em" title="Español">Español</a>
     </div>
 
-    <div class="CK">
+    <div class="top-info">
         Follow us: 
         <a href="https://www.facebook.com/CyberMannequin" target="_blank" style="margin-left:0.5em">
             <i class="fab fa-facebook-square"></i>
@@ -1069,12 +1073,10 @@ p {
     </div>
 
     <div id="header" class="part">
-        <div id="CN">
-            <div class="frame main-frame" style="position:relative">
-                <div class="frame movable-frame frame34"></div>
-            </div>
-        </div>
-        <div id="CL">
+        <video autoplay="autoplay" width="100%" loop="loop" muted="muted" title="Moving Mannequin">
+            <source src="moving-mannequin-../video.mp4" type="video/mp4" poster="video-preview.png">
+        </video>
+        <div id="text-container">
             <div class="title">
                 <span>Hier juste une poupée - aujourd'hui High Tech</span>
                 <br />
@@ -1093,12 +1095,12 @@ p {
         <div class="title">
             <span>Quel avantage en retirez-vous?</span>
         </div>
-        <div id="CN">
+        <div id="animation-container">
             <div class="frame main-frame" style="position:relative">
                 <div class="frame movable-frame frame32"></div>
             </div>
         </div>
-        <div id="CL">
+        <div id="text-container">
             <p>
                 
     Rien n'attire plus l'attention des gens que les images et les mouvements.
@@ -1120,12 +1122,12 @@ p {
         <div class="title">
             <span>Pour seulement <span class="replace price">PRICE</span> (hors TVA) pour chaque mannequin en mouvement, vous gagnez de nouveaux clients et de nouveaux mondes.</span>
         </div>
-        <div id="CN">
+        <div id="animation-container">
             <div class="frame main-frame" style="position:relative">
                 <div class="frame movable-frame frame28"></div>
             </div>
         </div>
-        <div id="CL">
+        <div id="text-container">
             <p>
                 
     Notre mannequin est la prochaine étape dans l'évolution des mannequins.
@@ -1147,7 +1149,7 @@ p {
     </div>
 
     <div id="footer">
-        <div id="CL">
+        <div id="text-container">
             <p id="ContactUs">
                 Contactez notre équipe de vente à Vienne pour tirer le meilleur parti de notre approche innovante de votre entreprise et augmenter vos ventes.
             </p>
@@ -1156,7 +1158,7 @@ p {
       <div class="inbound-form-wrapper" id="form_1780" data-path="https://app.99inbound.com/i/702c5fe9-b601-4405-a522-b6cc05346080" data-token="GrjdEhaf7Ih6AbC7JiqqYAtt"></div>
       
         </div>
-        <div class="CK">
+        <div class="top-info">
             Follow us:
             <a href="https://www.facebook.com/CyberMannequin" target="_blank" style="margin-left:0.5em">
                 <i class="fab fa-facebook-square"></i>
@@ -1165,7 +1167,7 @@ p {
                 <i class="fab fa-linkedin"></i>
             </a>
         </div>
-        <div class="CK">
+        <div class="top-info">
             <a href="http://cyber-mannequin.com/en" style="margin-left:1em" title="English">English</a>
             <a href="http://cyber-mannequin.com/fr" style="margin-left:1em" title="Français">Français</a>
             <a href="http://cyber-mannequin.com/de" style="margin-left:1em" title="Deutsch">Deutsch</a>
